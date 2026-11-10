@@ -20,10 +20,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Check out repository
+      - name: Check out the correct repository
         uses: actions/checkout@v4
         with:
+          # Explicitly use this project instead of relying on an implicit default.
+          repository: niklas-h1y/For-My-School
+          ref: ${{ github.ref }}
           fetch-depth: 0
+
+      - name: Verify checked-out repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(gh repo view --json nameWithOwner --jq '.nameWithOwner')"
+          if [[ "$actual" != "niklas-h1y/For-My-School" ]]; then
+            echo "::error::Expected niklas-h1y/For-My-School, but checked out $actual"
+            exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Move submitted index files to the repository root
         id: collect
