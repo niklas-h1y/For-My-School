@@ -2,6 +2,10 @@
 # 1 = index2.html, 2 = index3.html, 3 = index4.html, and so on.
 # Add as many lines as you need. Keep the | at the end of each line.
 
-1: Knochenbruch? | 
-2: Unused | 
-3: Unused |
+1: Knochenbruch? |
+2: Unicode Fold |
+3: Text-Sound Encoder |
+4: Wikipedia Example Page |
+5: Google Page |
+6: Cmd Terminal |
+7: Voxelworld |
